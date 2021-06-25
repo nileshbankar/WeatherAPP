@@ -8,6 +8,7 @@ const partialPath = path.join(__dirname, "../templates/partials");
 
 const app = express();
 
+const port = process.env.PORT || 3000;
 app.set("view engine", "hbs");
 app.set("views", viewsPath);
 hbs.registerPartials(partialPath);
@@ -69,6 +70,7 @@ app.get("*", (req, resp) => {
 app.get("/weather", (req, resp) => {
   resp.send({ location: "Pune", forecast: "Its raining" });
 });
-app.listen(3000, () => {
-  console.log("Server is up on port 3000");
+
+app.listen(port, () => {
+  console.log("Server is up on port " + port);
 });
